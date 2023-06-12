@@ -1,7 +1,14 @@
 describe("the home page - `sing in` contains needed elements", () => {
-  it("checks that the home page successfully loads and contains needed elements", () => {
-    cy.visit("http://localhost:3000");
+  const realUsername = "Katharina_Bernier";
+  const validPassword = "s3cret";
+  const fakeUsername = "Fake_Mario";
+  const invalidPassword = "12ERws";
 
+  beforeEach(() => {
+    cy.visit("http://localhost:3000");
+  });
+
+  it("checks that the home page successfully loads and contains needed elements", () => {
     // checks that home page contains sign in text
     cy.get("h1").contains("Sign in");
     cy.wait(2000);
@@ -26,23 +33,19 @@ describe("the home page - `sing in` contains needed elements", () => {
   });
 
   it("checks that sign in with real username and password works", () => {
-    cy.visit("http://localhost:3000");
-
-    cy.get("#username").type("Katharina_Bernier");
+    cy.get("#username").type(realUsername);
     cy.wait(2000);
-    cy.get("#password").type("s3cret");
+    cy.get("#password").type(validPassword);
     cy.wait(2000);
     cy.get("button").contains("Sign In").click();
     cy.wait(2000);
-    cy.get("h6").contains("Katharina_Bernier");
+    cy.get("h6").contains(realUsername);
   });
 
   it("checks that sign in with false/fake username and password doesnt work", () => {
-    cy.visit("http://localhost:3000");
-
-    cy.get("#username").type("Katharina_B");
+    cy.get("#username").type(fakeUsername);
     cy.wait(2000);
-    cy.get("#password").type("123456");
+    cy.get("#password").type(invalidPassword);
     cy.wait(2000);
     cy.get("button").contains("Sign In").click();
     cy.wait(2000);
@@ -50,11 +53,9 @@ describe("the home page - `sing in` contains needed elements", () => {
   });
 
   it("checks that sign in with correct username and wrong password doesnt work", () => {
-    cy.visit("http://localhost:3000");
-
-    cy.get("#username").type("Katharina_Bernier");
+    cy.get("#username").type(realUsername);
     cy.wait(2000);
-    cy.get("#password").type("123456");
+    cy.get("#password").type(invalidPassword);
     cy.wait(2000);
     cy.get("button").contains("Sign In").click();
     cy.wait(2000);
@@ -62,11 +63,9 @@ describe("the home page - `sing in` contains needed elements", () => {
   });
 
   it("checks that sign in with wrong username and correct password doesnt work", () => {
-    cy.visit("http://localhost:3000");
-
-    cy.get("#username").type("Katharina_B");
+    cy.get("#username").type(fakeUsername);
     cy.wait(2000);
-    cy.get("#password").type("s3cret");
+    cy.get("#password").type(validPassword);
     cy.wait(2000);
     cy.get("button").contains("Sign In").click();
     cy.wait(2000);
