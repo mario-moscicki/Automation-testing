@@ -1,7 +1,9 @@
 describe("Sign up page", () => {
-  it("checking fields on Sign up page", () => {
+  beforeEach(() => {
     cy.visit("http://localhost:3000");
+  });
 
+  it("checking fields on Sign up page", () => {
     //click on the link Dont have account - Sign Up
     cy.contains("Sign Up").click();
     //First name
@@ -22,8 +24,6 @@ describe("Sign up page", () => {
   });
 
   it("checking if info about 'password below than 4 characters' & 'Password does not match' is visible", () => {
-    cy.visit("http://localhost:3000");
-
     //click on the link Dont have account - Sign Up
     cy.contains("Sign Up").click();
     //First name
