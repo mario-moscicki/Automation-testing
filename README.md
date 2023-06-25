@@ -1,6 +1,12 @@
-# Automation-testing
+# Automation-testing  
 
-End-to-end (E2E) Cypress tests for this application: https://github.com/cypress-io/cypress-realworld-app  
+Udemy course - Cypress: Web Automation Testing from Zero to Hero  
+
+https://www.udemy.com/course/cypress-web-automation-testing-from-zero-to-hero/
+
+End-to-end (E2E) Cypress tests for this application:   
+
+https://github.com/cypress-io/cypress-realworld-app  
 
 #### You can check the code or/and watch the below video:  
 
